@@ -1,11 +1,8 @@
 #!/usr/bin/python3
-
-i = 1
-for x in range(9):
-    for y in range(i, 10):
-        if i != 9:
-            print('{:d}{:d}, '.format(x, y), end="")
-        else:
-            print('{:d}{:d}'.format(x, y))
-
-            i += 1
+for i in range(10):
+    for j in range(10):
+        if (i != j and i < j) and i < 9:
+            if (i == 8 and j == 9):
+                print('{0}{1}'.format(i, j))
+            else:
+                print('{0}{1}, '.format(i, j), end='')
