@@ -16,3 +16,15 @@ def validate_tuple(_tuple=()):
         _tuple = (_tuple[0], _tuple[1])
 
     return _tuple
+
+if __name__ == "__main__":
+    tuple_a = (1, 89)
+    tuple_b = (88, 11)
+    new_tuple = add_tuple(tuple_a, tuple_b)
+    print(new_tuple)
+
+    print(add_tuple(tuple_a, (1, )))
+    print(add_tuple(tuple_a, ()))
+
+    print(add_tuple((1,), (2, 3)))
+    print(add_tuple((1, 2, 3), (4, 5, 6)))
