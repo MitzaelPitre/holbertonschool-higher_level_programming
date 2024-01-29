@@ -19,4 +19,4 @@ if __name__ == "__main__":
     print(add_tuple(tuple_a, ()))
 
     print(add_tuple((1,), (2, 3)))  # (3, 3)
-    print(add_tuple((1, 2, 3), (4, 5, 6)))  # (5, 7)
+    print(add_tuple((1, 2, 3), (4, 5, 6))) 
