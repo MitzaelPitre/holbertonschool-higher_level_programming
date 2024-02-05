@@ -26,14 +26,14 @@ def matrix_divided(matrix, div):
     if not isinstance(matrix, list):
         raise TypeError('matrix must be a matrix (list of lists) '
                         'of integers/floats')
-    # matix has to exist, can't be less or equal to 0
+    # Matrix has to exist, can't be less or equal to 0
     if len(matrix[0]) <= 0:
         raise TypeError('matrix must be a matrix (list of lists) '
                         'of integers/floats')
     # 1.let's create new matrix with newrow
     for row in matrix:
         newrow = []
-        # matrix must be a list
+        # Matrix must be a list
         if type(row) is not list:
             raise TypeError('matrix must be a matrix (list of lists) '
                             'of integers/floats')
