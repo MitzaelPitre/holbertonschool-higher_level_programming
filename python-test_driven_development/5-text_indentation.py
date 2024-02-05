@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""text indentation"""
-
+"""Text indentation function."""
 
 def text_indentation(text):
     """Add indentation to text."""
@@ -8,11 +7,10 @@ def text_indentation(text):
         raise TypeError("text must be a string")
 
     for delimiter in "?:.":
-        words = (delimiter + "\n\n").join(
+        text = (delimiter + "\n\n").join(
                 [index.strip(" ") for index in text.split(delimiter)])
 
-    print(words)
-
+    print(text)
 
 if __name__ == "__main__":
     import doctest
