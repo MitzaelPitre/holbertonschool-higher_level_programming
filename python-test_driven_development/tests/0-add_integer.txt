@@ -1,130 +1,117 @@
-Test all delimeter with spaces at ends:
->>> text_indentation("Hello   :     Holberton    ?    school.    fooo     ")
+==========================
+How to use 0-add_integer.py
+==========================
 
-Hello:
-<BLANKLINE>
-Holberton?
-<BLANKLINE>
-school.
-<BLANKLINE>
-fooo
-Test just delimeter:
->>> text_indentation(".?:")
+Import function from module
+----------------------------
 
-.
-<BLANKLINE>
-?
-<BLANKLINE>
-:
-<BLANKLINE>
-Test string with the spaces:
->>> text_indentation("    Holberton")
+>> add_integer = __import__('0-add_integer').add_integer
 
-Holberton
-Test just delimeters:
->>> text_indentation("  ?  ")
 
-?
-<BLANKLINE>
-Test nonindent inside indent
->>> text_indentation("?Hello.")
 
-?
-<BLANKLINE>
-Hello.
-<BLANKLINE>
-Test existing newline:
->>> text_indentation("?\n\n.\n\n:")
 
-?
-<BLANKLINE>
-<BLANKLINE>
-<BLANKLINE>
-.
-<BLANKLINE>
-<BLANKLINE>
-<BLANKLINE>
-:
-<BLANKLINE>
-Test none:
->>> text_indentation(None)
+Basic cases (intranet):
+-----------------------
+    
+>> add_integer(2)
+
+100
+
+>> add_integer(1, 2)
+
+3
+
+>> add_integer(100, -2)
+
+98
+
+>> add_integer(100.3, -2)
+
+98
+
+>> add_integer(4, "School")
 
 Traceback (most recent call last):
-...
-TypeError: text must be a string
-Test num:
->>> text_indentation(33)
+TypeError: b must be an integer
+
+>> add_integer(None)
 
 Traceback (most recent call last):
-...
-TypeError: text must be a string
-Test string with some spaces:
->>> text_indentation("        Holberton          ")
+TypeError: a must be an integer
 
-Holberton
-Test string with an empty string:
->>> text_indentation("")
+Edge cases:
+----------------
 
-Test string with an empty string (2):
->>> text_indentation("      ")
+>> add_integer()
 
-Test:
->>> text_indentation("Hello: Holberton")
+Traceback (most recent call last):
+TypeError: add_integer() missing 1 required positional argument: 'a'
 
-Hello:
-<BLANKLINE>
-Holberton
-Test delimeters with spaces:
->>> text_indentation("      ?:  :  ")
+>> add_integer("unicorn")
 
-?
-<BLANKLINE>
-:
-<BLANKLINE>
-:
-<BLANKLINE>
-Test newline:
->>> text_indentation("\n")
+Traceback (most recent call last):
+TypeError: a must be an integer
 
-<BLANKLINE>
-Test newlines:
->>> text_indentation("\n\n")
+>> add_integer(5, None)
 
-<BLANKLINE>
-<BLANKLINE>
-Test newline 3:
->>> text_indentation("Hello\n\n")
+Traceback (most recent call last):
+TypeError: b must be an integer
 
-Hello
-<BLANKLINE>
-Import module:
->>> text_indentation = __import__('5-text_indentation').text_indentation
+>> add_integer(34, 54, 67)
 
-Test no delimeters:
->>> text_indentation("Hello Holberton")
+Traceback (most recent call last):
+TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
 
-Hello Holberton
-Test string with spaces:
->>> text_indentation("Holberton    ")
+The result can't be a float
+>> add_integer(2.5, 3.7)
 
-Holberton
-Test all delimeters!:
->>> text_indentation("Hello: Holberton? school. fooo")
+5
 
-Hello:
-<BLANKLINE>
-Holberton?
-<BLANKLINE>
-school.
-<BLANKLINE>
-fooo
-Test all delimeters with some spaces:
->>> text_indentation("Hello   :   Holberton  ?  school.  fooo")
+The result can't be a float
+>> add_integer(3.7)
 
-Hello:
-<BLANKLINE>
-Holberton?
-<BLANKLINE>
-school.
-<BLANKLINE>
-fooo
+101
+
+>> add_integer([1, 2, 3])
+
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>> add_integer((1, 2, 3))
+
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>> add_integer({"a": 1, "b": 2, "c": 3})
+
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>> add_integer(None)
+
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+exception OverflowError - Raised when the result of an arithmetic operation is too large to 
+be represented.
+
+>> add_integer(float('-inf'), float('inf'))
+
+Traceback (most recent call last):
+OverflowError: cannot convert float infinity to integer
+
+>> add_integer(100e1000, 1)
+
+Traceback (most recent call last):
+OverflowError: cannot convert float infinity to integer
+
+>> add_integer(float('inf'))
+
+Traceback (most recent call last):
+OverflowError: cannot convert float infinity to integer
+
+
+>> add_integer(float('nan'), 0)
+
+Traceback (most recent call last):
+ValueError: cannot convert float NaN to integer
