@@ -1,21 +1,23 @@
 #!/usr/bin/python3
+"""Lists states"""
+
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, backref
 
 Base = declarative_base()
 
 
 class State(Base):
-    """Defines ORM class for table `states`, with 2 columns:
-
-       `id` (Column): unique identifier, primary key
-       `name` (Column): name of state
-       `cities` (relationship): one-to-many-association to `City`
-    """
+    """Class representing the states table"""
     __tablename__ = 'states'
-    id = Column(Integer, autoincrement=True, unique=True,
-                nullable=False, primary_key=True)
+
+    id = Column(Integer, nullable=False, primary_key=True,
+                autoincrement=True, unique=True)
     name = Column(String(128), nullable=False)
-    cities = relationship("City", cascade="all, delete-orphan",
-                          backref="state")
+
+    cities = relationship(
+        "City",
+        cascade="all, delete-orphan",
+        backref=backref("state", cascade="all"),
+        single_parent=True)

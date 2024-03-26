@@ -1,32 +1,16 @@
 #!/usr/bin/python3
-# Lists all states from the database hbtn_0e_0_usa.
-# Usage: ./0-select_states.py <mysql username> \
-#                             <mysql password> \
-#                             <database name>
-import sys
+"""Lists states"""
+
 import MySQLdb
+from sys import argv
 
 if __name__ == "__main__":
-    # Verificar el número correcto de argumentos
-    if len(sys.argv) != 4:
-        print("Usage: ./0-select_states.py <mysql username> <mysql password> <database name>")
-        sys.exit(1)
-    
-    try:
-        # Conectar a la base de datos
-        db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
-        c = db.cursor()
-        
-        # Ejecutar la consulta SQL
-        c.execute("SELECT * FROM states ORDER BY id ASC")
-        
-        # Mostrar los resultados
-        for state in c.fetchall():
-            print(state)
-        
-        # Cerrar la conexión a la base de datos
-        db.close()
-    except MySQLdb.Error as e:
-        print(f"Error connecting to MySQL: {e}")
-        sys.exit(1)
-
+    conn = MySQLdb.connect(host="localhost", port=3306, user=argv[1],
+                           passwd=argv[2], db=argv[3], charset="utf8")
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM states ORDER BY states.id ASC")
+    query_rows = cur.fetchall()
+    for row in query_rows:
+        print(row)
+    cur.close()
+    conn.close()
